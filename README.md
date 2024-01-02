@@ -1,6 +1,6 @@
 Graph theory and sort algorithm python code playground.
 
-Include single source shortest path, minimum spanning tree, insert sort, merge sort, quick sort, heap sort, radix sort, chosen sort and count sort.
+It includes single source shortest path, minimum spanning tree, insert sort, merge sort, quick sort, heap sort, radix sort, chosen sort and count sort.
 
 Use pytest -k prefix to test your implementation.
 
