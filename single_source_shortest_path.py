@@ -8,6 +8,7 @@ from collections import deque
 inf = float('inf')
 
 
+# O(mlgn)
 def dijkstra(edges: List[List[int]], source: int, n: int) -> List[int]:
     e = [-1] * (2 * n + 7)
     w = [-1] * (2 * n + 7)
@@ -48,6 +49,7 @@ def dijkstra(edges: List[List[int]], source: int, n: int) -> List[int]:
     return dist
 
 
+# O(nm)
 def bellman_ford(edges: List[List[int]], source: int, n: int) -> List[int]:
     dist = [inf] * n
     dist[source] = 0
@@ -63,6 +65,7 @@ def bellman_ford(edges: List[List[int]], source: int, n: int) -> List[int]:
     return dist
 
 
+# O(km)
 def bellman_ford_with_queue(edges: List[List[int]], source: int, n: int) -> List[int]:
     e = [-1] * (2 * n + 7)
     w = [-1] * (2 * n + 7)

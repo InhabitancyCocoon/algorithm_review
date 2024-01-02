@@ -7,6 +7,7 @@ import heapq
 inf = float('inf')
 
 
+# O(mlgm)
 def kruskal(edges: List[List[int]], n: int) -> int:
     edges.sort(key=lambda e: e[-1])
 
