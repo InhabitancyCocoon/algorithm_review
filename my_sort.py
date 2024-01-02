@@ -118,8 +118,11 @@ def quick_sort_imp(arr: List[int], l: int, r: int) -> None:
     quick_sort_imp(arr, ptr + 1, r)
 
 
+# Implement a min heap
+
 class Heap:
-    def __init__(self, arr) -> None:
+
+    def __init__(self, arr: List[int] = []) -> None:
         self.n = len(arr)
         self.arr = list(arr)
         for i in range(self.n >> 1, -1, -1):
@@ -139,9 +142,28 @@ class Heap:
     def pop(self):
         x = self.arr[0]
         self.arr[0], self.arr[self.n - 1] = self.arr[self.n - 1], self.arr[0]
+        self.arr.pop()
         self.n -= 1
         self._sift_down(0)
         return x
+    
+    def push(self, x: int) -> None:
+        self.arr.append(x)
+        self.n += 1
+        self._sift_up(self.n - 1)
+
+    def _sift_up(self, i: int):
+        while i:
+            fa = (i - 1) >> 1
+            if self.arr[fa] > self.arr[i]:
+                print(i, fa, self.arr[fa], self.arr[i])
+                self.arr[fa], self.arr[i] = self.arr[i], self.arr[fa]
+                i = fa
+            else:
+                break
+
+    def peak(self) -> int:
+        return self.arr[0]
 
     def __len__(self):
         return self.n
