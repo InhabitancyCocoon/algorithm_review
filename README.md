@@ -6,3 +6,5 @@ Use pytest -k prefix to test your implementation.
 
 e.g., if your want to test the insert sort function, just type pytest -k insert in your cmd.
 
+
+My solution has passed the test on https://neetcode.io/ and https://workat.tech/, I'll be grateful if you report any mistake.
