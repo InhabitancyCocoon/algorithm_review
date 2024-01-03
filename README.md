@@ -6,6 +6,7 @@ I provide alternative version with different time complexity.
 
 Sort algorithm includes:
 merge_sort, insert_sort, heap_sort, count_sort, radix_sort, quick_sort, chosen_sort, bubble_sort.
+Notice that I do not test the stability.
 
 Use pytest -k prefix to test your implementation.
 
