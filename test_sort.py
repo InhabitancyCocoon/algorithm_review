@@ -8,6 +8,7 @@ from my_sort import (
     radix_sort,
     quick_sort,
     chosen_sort,
+    bubble_sort
 )
 from typing import Callable, List
 
@@ -15,6 +16,10 @@ from typing import Callable, List
 def test_sort_algorithm(func: Callable[[List[int]], None]):
     for _ in range(10):
         test_single_sample(func)
+
+
+def test_bubble_sort():
+    test_sort_algorithm(bubble_sort)
 
 
 def test_merge_sort():

@@ -5,6 +5,19 @@ from collections import Counter, defaultdict
 # arr = [random.randint(10, 99) for _ in range(100)]
 
 
+def bubble_sort(arr: List[int]) -> List[int]:
+    n = len(arr)
+    for i in range(1, n):
+        change = False
+        for j in range(n - i):
+            if arr[j] > arr[j + 1]:
+                arr[j + 1], arr[j] = arr[j], arr[j + 1]
+                change = True
+        if not change:
+            break
+    return arr
+
+
 def merge_sort_imp(arr: List[int], l: int, r: int) -> None:
     if l >= r:
         return
