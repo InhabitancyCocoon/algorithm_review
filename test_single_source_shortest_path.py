@@ -1,5 +1,5 @@
 import pytest
-from single_source_shortest_path import dijkstra, bellman_ford, bellman_ford_with_queue
+from single_source_shortest_path import dijkstra_mlgn, dijkstra_n2, bellman_ford, bellman_ford_with_queue
 from typing import List, Callable
 
 inf = float('inf')
@@ -91,7 +91,8 @@ def test_single_source_shortest_path(
 
 
 def test_dijkstra() -> None:
-    test_single_source_shortest_path(dijkstra)
+    test_single_source_shortest_path(dijkstra_mlgn)
+    test_single_source_shortest_path(dijkstra_n2)
 
 
 def test_bellman_ford() -> None:

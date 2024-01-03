@@ -9,7 +9,7 @@ inf = float('inf')
 
 
 # O(mlgn)
-def dijkstra(edges: List[List[int]], source: int, n: int) -> List[int]:
+def dijkstra_mlgn(edges: List[List[int]], source: int, n: int) -> List[int]:
     e = [-1] * (2 * n + 7)
     w = [-1] * (2 * n + 7)
     he = [-1] * (n + 7)
@@ -47,6 +47,33 @@ def dijkstra(edges: List[List[int]], source: int, n: int) -> List[int]:
             i = ne[i]
 
     return dist
+
+
+def dijkstra_n2(edges: List[List[int]], source: int, n: int) -> List[int]:
+    adj = [[inf] * n for _ in range(n)]
+    
+    def add(a: int, b: int, c: int) -> None:
+        adj[a][b] = c
+
+    for a, b, c in edges:
+        add(a, b, c)
+
+    dist = [inf] * n
+    vis = [False] * n
+
+    dist[source] = 0
+
+    for _ in range(1, n):
+        x = n + 7
+        for j in range(n):
+            if not vis[j] and (x == n + 7 or dist[x] > dist[j]):
+                x = j
+        vis[x] = True
+        for j in range(n):
+            dist[j] = min(dist[j], dist[x] + adj[x][j])
+
+    return dist
+    
 
 
 # O(nm)
@@ -112,7 +139,7 @@ src = 0
 
 
 if __name__ == '__main__':
-    dist = dijkstra(edges, src, n)
+    dist = dijkstra_mlgn(edges, src, n)
     print(dist)
     dist = bellman_ford(edges, src, n)
     print(dist)
