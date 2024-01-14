@@ -9,6 +9,8 @@ def tarjan_bridge(edges: List[List[int]], n: int) -> List[int]:
     n: number of vertices
 
     return: edges that are bridges which connect two subgraph.
+
+    test: https://leetcode.cn/problems/critical-connections-in-a-network/description/
     '''
 
     idx = 2
@@ -17,8 +19,6 @@ def tarjan_bridge(edges: List[List[int]], n: int) -> List[int]:
     ne = [-1] * (2 * m + 7)
     he = [-1] * (n + 7)
 
-
-
     def add(a: int, b: int) -> None:
         nonlocal idx
         e[idx] = b
@@ -26,7 +26,6 @@ def tarjan_bridge(edges: List[List[int]], n: int) -> List[int]:
         he[a] = idx
         idx += 1
 
-    
     def dfs(a: int, in_edge: int) -> None:
         nonlocal ts
         dfn[a] = low[a] = ts
@@ -43,9 +42,6 @@ def tarjan_bridge(edges: List[List[int]], n: int) -> List[int]:
                 low[a] = min(low[a], dfn[b])
             i = ne[i]
 
-        
-
-
     for a, b in edges:
         add(a, b)
         add(b, a)
@@ -57,6 +53,4 @@ def tarjan_bridge(edges: List[List[int]], n: int) -> List[int]:
         if not dfn[a]:
             dfs(a, 0)
 
-    
     return [edges[i // 2] for i in range(0, 2 * m, 2) if bridge[i + 2]]
-    
