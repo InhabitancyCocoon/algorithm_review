@@ -5,15 +5,16 @@ from collections import deque
 
 # edge: [from, to, weight], directed simple graph, m: edges number, n: vertices number (index starts from 0)
 
-inf = float('inf')
+inf = float("inf")
 
 
 # O(mlgn)
 def dijkstra_mlgn(edges: List[List[int]], source: int, n: int) -> List[int]:
-    e = [-1] * (2 * n + 7)
-    w = [-1] * (2 * n + 7)
+    m = len(edges)
+    e = [-1] * (m + 7)
+    w = [-1] * (m + 7)
     he = [-1] * (n + 7)
-    ne = [-1] * (2 * n + 7)
+    ne = [-1] * (m + 7)
     idx = 1
 
     def add(a: int, b: int, c: int):
@@ -51,7 +52,7 @@ def dijkstra_mlgn(edges: List[List[int]], source: int, n: int) -> List[int]:
 
 def dijkstra_n2(edges: List[List[int]], source: int, n: int) -> List[int]:
     adj = [[inf] * n for _ in range(n)]
-    
+
     def add(a: int, b: int, c: int) -> None:
         adj[a][b] = c
 
@@ -73,7 +74,6 @@ def dijkstra_n2(edges: List[List[int]], source: int, n: int) -> List[int]:
             dist[j] = min(dist[j], dist[x] + adj[x][j])
 
     return dist
-    
 
 
 # O(nm)
@@ -92,12 +92,13 @@ def bellman_ford(edges: List[List[int]], source: int, n: int) -> List[int]:
     return dist
 
 
-# O(km)
+# O(mlgn)
 def bellman_ford_with_queue(edges: List[List[int]], source: int, n: int) -> List[int]:
-    e = [-1] * (2 * n + 7)
-    w = [-1] * (2 * n + 7)
+    m = len(edges)
+    e = [-1] * (m + 7)
+    w = [-1] * (m + 7)
     he = [-1] * (n + 7)
-    ne = [-1] * (2 * n + 7)
+    ne = [-1] * (m + 7)
     idx = 1
 
     def add(a: int, b: int, c: int):
@@ -113,32 +114,45 @@ def bellman_ford_with_queue(edges: List[List[int]], source: int, n: int) -> List
 
     dist = [inf] * n
     dist[source] = 0
+    vis = [0] * n
+    vis[source] = 1
     q = deque()
     q.append(source)
 
     while q:
-        s = len(q)
-        vis = [0] * n
-        for _ in range(s):
-            a = q.popleft()
-            i = he[a]
-            while i != -1:
-                b = e[i]
-                if dist[b] > dist[a] + w[i] and not vis[b]:
-                    q.append(b)
+        a = q.popleft()
+        vis[a] = 0
+        i = he[a]
+        while i != -1:
+            b = e[i]
+            if dist[b] > dist[a] + w[i]:
+                dist[b] = dist[a] + w[i]
+                if not vis[b]:
                     vis[b] = 1
-                    dist[b] = dist[a] + w[i]
-                i = ne[i]
+                    q.append(b)
+            i = ne[i]
 
     return dist
 
 
-n = 3
-edges = [[0, 1, 4]]
+n = 7
+edges = [
+    [0, 1, 2],
+    [0, 3, 3],
+    [0, 6, 4],
+    [1, 2, 3],
+    [1, 4, 2],
+    [3, 4, 5],
+    [4, 5, 7],
+    [4, 6, 6],
+]
+m = len(edges)
+for a, b, c in edges[:m]:
+    edges.append([b, a, c])
 src = 0
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     dist = dijkstra_mlgn(edges, src, n)
     print(dist)
     dist = bellman_ford(edges, src, n)

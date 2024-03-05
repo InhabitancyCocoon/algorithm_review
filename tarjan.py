@@ -4,14 +4,14 @@ from typing import List
 
 
 def tarjan_bridge(edges: List[List[int]], n: int) -> List[int]:
-    '''
+    """
     edges: List[List[int]], [a, b] represents an edge from a to b. The index starts from zero.
     n: number of vertices
 
     return: edges that are bridges which connect two subgraph.
 
     test: https://leetcode.cn/problems/critical-connections-in-a-network/description/
-    '''
+    """
 
     idx = 2
     m = len(edges)

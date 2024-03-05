@@ -133,8 +133,8 @@ def quick_sort_imp(arr: List[int], l: int, r: int) -> None:
 
 # Implement a min heap
 
-class Heap:
 
+class Heap:
     def __init__(self, arr: List[int] = []) -> None:
         self.n = len(arr)
         self.arr = list(arr)
@@ -159,7 +159,7 @@ class Heap:
         self.n -= 1
         self._sift_down(0)
         return x
-    
+
     def push(self, x: int) -> None:
         self.arr.append(x)
         self.n += 1

@@ -27,7 +27,7 @@ def test_mst_algorithm(func: Callable[[List[List[int]], int], int]) -> None:
         output = func(*case)
         assert (
             output == expected_outputs[i]
-        ), f'case: {case}, expected: {expected_outputs[i]}, but got: {output}'
+        ), f"case: {case}, expected: {expected_outputs[i]}, but got: {output}"
 
 
 def test_kruskal() -> None:

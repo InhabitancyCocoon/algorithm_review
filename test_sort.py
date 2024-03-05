@@ -8,7 +8,7 @@ from my_sort import (
     radix_sort,
     quick_sort,
     chosen_sort,
-    bubble_sort
+    bubble_sort,
 )
 from typing import Callable, List
 
@@ -54,4 +54,4 @@ def test_single_sample(func: Callable[[List[int]], List[int]]):
     arr = [random.randint(10, 99) for _ in range(100)]
     expected_arr = sorted(arr)
     sorted_arr = func(arr)
-    assert sorted_arr == expected_arr, f'Expect array: {expected_arr}, but got {arr}'
+    assert sorted_arr == expected_arr, f"Expect array: {expected_arr}, but got {arr}"

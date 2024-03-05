@@ -4,7 +4,7 @@ import heapq
 
 # edge: [from, to, weight], undirected simple graph, m: edges number, n: vertices number (index starts from 0)
 
-inf = float('inf')
+inf = float("inf")
 
 
 # O(mlgm)
@@ -100,5 +100,5 @@ def prim_mlgn(edges: List[List[int]], n: int) -> int:
     return sum(d)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     pass
