@@ -1,9 +1,11 @@
 import pytest
 from minimum_spanning_tree import kruskal, prim_n2, prim_mlgn
-from typing import List, Callable
+from typing import List, Callable, TypeAlias
+
+Edge: TypeAlias = List[int]
 
 
-def test_mst_algorithm(func: Callable[[List[List[int]], int], int]) -> None:
+def test_mst_algorithm(func: Callable[[List[Edge], int], int]) -> None:
     test_cases = [
         [
             [

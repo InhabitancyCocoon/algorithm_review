@@ -5,13 +5,15 @@ from single_source_shortest_path import (
     bellman_ford,
     bellman_ford_with_queue,
 )
-from typing import List, Callable
+from typing import List, Callable, TypeAlias
 
 inf = float("inf")
 
+Edge: TypeAlias = List[int]
+
 
 def test_single_source_shortest_path(
-    func: Callable[[[List[List[int]]], int, int], List[int]]
+    func: Callable[[List[Edge], int, int], List[int]]
 ) -> None:
     test_cases = [
         [
