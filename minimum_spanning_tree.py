@@ -53,10 +53,11 @@ def prim_n2(edges: List[List[int]], n: int) -> int:
 
 
 def prim_mlgn(edges: List[List[int]], n: int) -> int:
-    e = [-1] * (n**2 // 2)
-    w = [-1] * (n**2 // 2)
+    m = len(edges)
+    e = [-1] * (m * 2 + 7)
+    w = [-1] * (m * 2 + 7)
     he = [-1] * (n + 7)
-    ne = [-1] * (n**2 // 2)
+    ne = [-1] * (m * 2 + 7)
     idx = 1
 
     def add(a: int, b: int, c: int):

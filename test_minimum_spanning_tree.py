@@ -38,4 +38,4 @@ def test_kruskal() -> None:
 
 def test_prim() -> None:
     test_mst_algorithm(prim_mlgn)
-    # test_mst_algorithm(prim_n2)
+    test_mst_algorithm(prim_n2)
