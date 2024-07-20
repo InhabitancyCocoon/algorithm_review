@@ -92,7 +92,7 @@ def bellman_ford(edges: List[List[int]], source: int, n: int) -> List[int]:
     return dist
 
 
-# O(mlgn)
+# O(km)
 def bellman_ford_with_queue(edges: List[List[int]], source: int, n: int) -> List[int]:
     m = len(edges)
     e = [-1] * (m + 7)
